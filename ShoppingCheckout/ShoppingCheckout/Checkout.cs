@@ -16,7 +16,7 @@ namespace ShoppingCheckout
 
     class Checkout : ICheckout
     {
-        private Dictionary<object, int> _itemsScanned = new Dictionary<object, int>();
+        private Dictionary<Stock, int> _itemsScanned = new Dictionary<Stock, int>();
 
 
         public Checkout()
@@ -26,47 +26,13 @@ namespace ShoppingCheckout
 
         public void Scan(string item)
         {
-            if (_itemsScanned.ContainsKey(item))
-            {
-                _itemsScanned[item]++;
-            }
-            else
-            {
-                _itemsScanned.Add(item, 1);
-            }
-        }
-
-
-        private int TotalPriceBeforeDiscount()
-        {
-            int total = 0;
-
-            foreach (KeyValuePair<object, int> kvp in _itemsScanned)
-            {
-                total += kvp.Value * // reference price kvp.Key ;
-            }
-
-            return total;
-        }
-
-
-        private int TotalDiscount()
-        {
-            // total of all discounts
-            int total = 0;
-
-            foreach (KeyValuePair<object, int> kvp in _itemsScanned)
-            {
-                // code
-            }
-
-            return total;
+            // code
         }
 
 
         public int GetTotalPrice()
         {
-            return TotalPriceBeforeDiscount() - TotalDiscount();
+            return 0;
         }
 
 
