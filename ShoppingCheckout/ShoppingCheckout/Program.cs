@@ -21,6 +21,58 @@ namespace ShoppingCheckout
             StockList.Add(new Stock('D', 15));
 
 
+            // New instance of checkout
+            Checkout Checkout = new Checkout(StockList);
+
+
+            // Accepts item and returns correct prive
+            Checkout.Scan('A');
+            Console.WriteLine(Checkout.GetTotalPrice());
+            Checkout.Paid();
+            Console.WriteLine();
+
+            // Accepts items out of order
+            Checkout.Scan('A');
+            Checkout.Scan('B');
+            Checkout.Scan('A');
+            Console.WriteLine(Checkout.GetTotalPrice());
+            Checkout.Paid();
+            Console.WriteLine();
+
+            // Caculates correct discount even if out of order
+            Checkout.Scan('B');
+            Checkout.Scan('A');
+            Checkout.Scan('B');
+            Console.WriteLine(Checkout.GetTotalPrice());
+            Checkout.Paid();
+            Console.WriteLine();
+
+            // Accepts unordered range of discounted and non-discounted items
+            Checkout.Scan('A');
+            Checkout.Scan('B');
+            Checkout.Scan('C');
+            Checkout.Scan('D');
+            Checkout.Scan('C');
+            Checkout.Scan('B');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Console.WriteLine(Checkout.GetTotalPrice());
+            Checkout.Paid();
+            Console.WriteLine();
+
+            // Accepts many discounted item and still returns correct value
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Checkout.Scan('A');
+            Console.WriteLine(Checkout.GetTotalPrice());
+            Checkout.Paid();
+
+            Console.ReadLine();
         }
     }
 }

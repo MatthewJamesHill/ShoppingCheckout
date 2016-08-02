@@ -29,22 +29,32 @@ namespace ShoppingCheckout
         // Checks database (simple list currently) for item, appends to dictionary or increases quantity
         public void Scan(char Code)
         {
-            Stock StockItem;
-            foreach (Stock Item in _stockList)
-            {
-                if (Item.SKU == Code) { StockItem = Item; }
-                break;
-            }
+            // No code to handle key does not exist yet
+            Stock StockItem = _stockList.Find(x => x.SKU == Code);
 
-            // Check if StockItem already key in _itemsScanned
-            // If so increment quantity
-            // Else add to dict with quantity of 1
+            if ( _itemsScanned.ContainsKey(StockItem))
+            {
+                _itemsScanned[StockItem]++;
+            }
+            else
+            {
+                _itemsScanned.Add(StockItem, 1);
+            }
         }
 
 
         public int GetTotalPrice()
         {
-            return 0;
+            int runningtotal = 0;
+
+            // For all items scanned add total price to running total and subtract discount if any
+            foreach (KeyValuePair<Stock, int> Item in _itemsScanned)
+            {
+                runningtotal += Item.Key.Price * Item.Value;
+                runningtotal -= Item.Key.CalculateDiscount(Item.Value);
+            }
+
+            return runningtotal;
         }
 
 

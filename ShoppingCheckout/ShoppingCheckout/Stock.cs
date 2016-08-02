@@ -12,8 +12,8 @@ namespace ShoppingCheckout
         public char SKU { get; private set; }
         public int Price { get; set; }
 
-        public int? SpecialPrice { get; set; }
-        public int? QuantityRequired { get; set; }
+        public int SpecialPrice { get; set; }
+        public int QuantityRequired { get; set; }
 
 
         // Default constructor with no discount
@@ -22,8 +22,8 @@ namespace ShoppingCheckout
             SKU = StockKeepingUnit;
             Price = UnitPrice;
 
-            SpecialPrice = null;
-            QuantityRequired = null;
+            SpecialPrice = 0;
+            QuantityRequired = 0;
         }
         
 
@@ -39,17 +39,21 @@ namespace ShoppingCheckout
 
          
         // Positive integer of difference between QuantityRequired times price and SpecialPrice
-        private int DiscountPerQuantityRequired => (Price * (int)QuantityRequired) - (int)SpecialPrice;
+        private int DiscountPerQuantityRequired => (Price * QuantityRequired) - SpecialPrice;
 
 
         // Returns positive integer of discount to be applied based on quantity of item
         public int CalculateDiscount(int Quantity)
         {
-            if (Quantity < QuantityRequired) { return 0; }
+
+            if ( SpecialPrice == 0 || Quantity < QuantityRequired)
+            {
+                return 0;
+            }
 
             else
             {
-                return (Quantity / (int)QuantityRequired) * DiscountPerQuantityRequired;
+                return (Quantity / QuantityRequired) * DiscountPerQuantityRequired;
             }
         }
         
