@@ -25,9 +25,9 @@ namespace ShoppingCheckout
             Checkout Checkout = new Checkout(StockList);
 
 
-            // Accepts item and returns correct prive
+            // Accepts item and returns correct price
             Checkout.Scan('A');
-            Console.WriteLine(Checkout.GetTotalPrice());
+            Console.WriteLine("Expecting: 50. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
             Console.WriteLine();
 
@@ -35,7 +35,7 @@ namespace ShoppingCheckout
             Checkout.Scan('A');
             Checkout.Scan('B');
             Checkout.Scan('A');
-            Console.WriteLine(Checkout.GetTotalPrice());
+            Console.WriteLine("Expecting: 130. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
             Console.WriteLine();
 
@@ -43,7 +43,7 @@ namespace ShoppingCheckout
             Checkout.Scan('B');
             Checkout.Scan('A');
             Checkout.Scan('B');
-            Console.WriteLine(Checkout.GetTotalPrice());
+            Console.WriteLine("Expecting: 95. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
             Console.WriteLine();
 
@@ -56,7 +56,7 @@ namespace ShoppingCheckout
             Checkout.Scan('B');
             Checkout.Scan('A');
             Checkout.Scan('A');
-            Console.WriteLine(Checkout.GetTotalPrice());
+            Console.WriteLine("Expecting: 230. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
             Console.WriteLine();
 
@@ -69,7 +69,7 @@ namespace ShoppingCheckout
             Checkout.Scan('A');
             Checkout.Scan('A');
             Checkout.Scan('A');
-            Console.WriteLine(Checkout.GetTotalPrice());
+            Console.WriteLine("Expecting: 360. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
 
             Console.ReadLine();
