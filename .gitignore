@@ -250,3 +250,18 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/ShoppingCheckout/ShoppingCheckoutTests2/ShoppingCheckoutTests2.csproj
+/ShoppingCheckout/ShoppingCheckoutTests2/Properties/AssemblyInfo.cs
+/ShoppingCheckout/ShoppingCheckoutTests2/Properties
+/ShoppingCheckout/ShoppingCheckoutTests2/CheckoutTests.cs
+/ShoppingCheckout/ShoppingCheckoutTests2
+/ShoppingCheckout/ShoppingCheckoutTests1/StockTests.cs
+/ShoppingCheckout/ShoppingCheckoutTests1/ShoppingCheckoutTests1.csproj
+/ShoppingCheckout/ShoppingCheckoutTests1/Properties/AssemblyInfo.cs
+/ShoppingCheckout/ShoppingCheckoutTests1/Properties
+/ShoppingCheckout/ShoppingCheckoutTests1
+/ShoppingCheckout/ShoppingCheckoutTests/StockTests.cs
+/ShoppingCheckout/ShoppingCheckoutTests/ShoppingCheckoutTests.csproj
+/ShoppingCheckout/ShoppingCheckoutTests/Properties/AssemblyInfo.cs
+/ShoppingCheckout/ShoppingCheckoutTests/Properties
+/ShoppingCheckout/ShoppingCheckoutTests

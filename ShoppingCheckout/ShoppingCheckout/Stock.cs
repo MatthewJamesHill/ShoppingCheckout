@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingCheckout
 {
-    class Stock
+    public class Stock
     {
         // Would rather use string for greater variation / flexibility but Kata requires char
         public char SKU { get; private set; }

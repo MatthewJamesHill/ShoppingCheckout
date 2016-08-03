@@ -14,7 +14,7 @@ namespace ShoppingCheckout
     }
 
 
-    class Checkout : ICheckout
+    public class Checkout : ICheckout
     {
         private List<Stock> _stockList;
         private Dictionary<Stock, int> _itemsScanned = new Dictionary<Stock, int>();
