@@ -10,15 +10,15 @@ namespace ShoppingCheckout
     {
         static void Main(string[] args)
         {
-            // Using a list instead of writing new database for kata
-            List<Stock> StockList = new List<Stock>();
-
+            // Dictionary faster to search with SKU as key
+            Dictionary<char, Stock> StockList = new Dictionary<char, Stock>();
+            
 
             // Create all stock items and append them to list
-            StockList.Add(new Stock('A', 50, 130, 3));
-            StockList.Add(new Stock('B', 30, 45, 2));
-            StockList.Add(new Stock('C', 20));
-            StockList.Add(new Stock('D', 15));
+            StockList.Add('A', new Stock('A', 50, 130, 3));
+            StockList.Add('B', new Stock('B', 30, 45, 2));
+            StockList.Add('C', new Stock('C', 20));
+            StockList.Add('D', new Stock('D', 15));
 
 
             // New instance of checkout

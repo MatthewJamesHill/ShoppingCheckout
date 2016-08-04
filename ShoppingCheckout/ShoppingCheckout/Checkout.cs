@@ -16,11 +16,11 @@ namespace ShoppingCheckout
 
     public class Checkout : ICheckout
     {
-        private List<Stock> _stockList;
+        private Dictionary<char, Stock> _stockList;
         private Dictionary<Stock, int> _itemsScanned = new Dictionary<Stock, int>();
 
 
-        public Checkout(List<Stock> StockList)
+        public Checkout(Dictionary<char, Stock> StockList)
         {
             _stockList = StockList;
         }
@@ -30,7 +30,7 @@ namespace ShoppingCheckout
         public void Scan(char Code)
         {
             // No code to handle key does not exist yet
-            Stock StockItem = _stockList.Find(x => x.SKU == Code);
+            Stock StockItem = _stockList[Code];
 
             if ( _itemsScanned.ContainsKey(StockItem))
             {
