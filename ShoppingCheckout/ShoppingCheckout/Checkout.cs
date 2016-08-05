@@ -26,19 +26,29 @@ namespace ShoppingCheckout
         }
 
 
-        // Checks database (simple list currently) for item, appends to dictionary or increases quantity
+        // Checks dictionary for item by key, appends to dictionary or increases quantity
         public void Scan(char Code)
         {
-            // No code to handle key does not exist yet
-            Stock StockItem = _stockList[Code];
+            Stock StockItem;
 
-            if ( _itemsScanned.ContainsKey(StockItem))
-            {
-                _itemsScanned[StockItem]++;
-            }
+            if (_stockList.TryGetValue(Code, out StockItem)) { }
             else
             {
-                _itemsScanned.Add(StockItem, 1);
+                Console.WriteLine(Code + " does not exist!");
+            }
+
+
+            
+            if (StockItem != null)
+            {
+                if (_itemsScanned.ContainsKey(StockItem))
+                {
+                    _itemsScanned[StockItem]++;
+                }
+                else
+                {
+                    _itemsScanned.Add(StockItem, 1);
+                }
             }
         }
 

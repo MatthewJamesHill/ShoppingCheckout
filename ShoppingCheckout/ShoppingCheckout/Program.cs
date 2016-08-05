@@ -10,18 +10,18 @@ namespace ShoppingCheckout
     {
         static void Main(string[] args)
         {
-            // Dictionary faster to search with SKU as key
+            // Dictionary faster to search with SKU as key ( O(1) instead of O(n) )
             Dictionary<char, Stock> StockList = new Dictionary<char, Stock>();
             
 
-            // Create all stock items and append them to list
+            // Create all stock items in kata and append them to list
             StockList.Add('A', new Stock('A', 50, 130, 3));
             StockList.Add('B', new Stock('B', 30, 45, 2));
             StockList.Add('C', new Stock('C', 20));
             StockList.Add('D', new Stock('D', 15));
 
 
-            // New instance of checkout
+            // Create new instance of checkout
             Checkout Checkout = new Checkout(StockList);
 
 
@@ -70,6 +70,14 @@ namespace ShoppingCheckout
             Checkout.Scan('A');
             Checkout.Scan('A');
             Console.WriteLine("Expecting: 360. Ouput: {0}", Checkout.GetTotalPrice());
+            Checkout.Paid();
+            Console.WriteLine();
+
+            // Handles incorrect input, and continues running
+            Console.WriteLine("Expecting error emssage.");
+            Checkout.Scan('E');
+            Checkout.Scan('A');
+            Console.WriteLine("Expecting: 50. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
 
             Console.ReadLine();
