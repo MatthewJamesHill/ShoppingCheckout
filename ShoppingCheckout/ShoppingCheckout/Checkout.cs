@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShoppingCheckout
 {
+    /// <summary>
+    /// Default interface required by kata
+    /// </summary>
     interface ICheckout
     {
         void Scan(char item);
@@ -14,23 +17,34 @@ namespace ShoppingCheckout
     }
 
 
+    /// <summary>
+    /// Scan codes, retrieve items from database, and calculate total price with discounts applied
+    /// </summary>
     public class Checkout : ICheckout
     {
         private Dictionary<char, Stock> _stockList;
         private Dictionary<Stock, int> _itemsScanned = new Dictionary<Stock, int>();
 
 
+        /// <summary>
+        /// The default constructor
+        /// </summary>
+        /// <param name="StockList"> All stock available to checkout </param>
         public Checkout(Dictionary<char, Stock> StockList)
         {
             _stockList = StockList;
         }
 
 
-        // Checks dictionary for item by key, appends to dictionary or increases quantity
+        /// <summary>
+        /// Check stock for key, append to _itemsScanned or increase quantity
+        /// </summary>
+        /// <param name="Code"></param>
         public void Scan(char Code)
         {
             Stock StockItem;
 
+            // Handle bad input
             if (_stockList.TryGetValue(Code, out StockItem)) { }
             else
             {
@@ -53,6 +67,10 @@ namespace ShoppingCheckout
         }
 
 
+        /// <summary>
+        /// Calculates total price of all items, then subtracts total applicable discount
+        /// </summary>
+        /// <returns> Int of total price after discounts applied </returns>
         public int GetTotalPrice()
         {
             int runningtotal = 0;
@@ -68,6 +86,9 @@ namespace ShoppingCheckout
         }
 
 
+        /// <summary>
+        /// Clears _itemsScanned for next customer
+        /// </summary>
         public void Paid()
         {
             _itemsScanned.Clear();

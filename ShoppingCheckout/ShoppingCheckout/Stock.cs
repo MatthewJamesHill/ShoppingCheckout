@@ -1,11 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ShoppingCheckout
 {
+    /// <summary>
+    /// Context for database
+    /// </summary>
+    public class StockContext : DbContext
+    {
+        public DbSet<Stock> Stock { get; set; }
+    }
+    // https://msdn.microsoft.com/en-us/data/jj572366
+
+    
+    
+    /// <summary>
+    /// Item of stock, includes SKU, price, and discount information
+    /// </summary>
     public class Stock
     {
         // Would rather use string for greater variation / flexibility but Kata requires char
@@ -16,7 +32,11 @@ namespace ShoppingCheckout
         public int QuantityRequired { get; set; }
 
 
-        // Default constructor with no discount
+        /// <summary>
+        /// Default constructor with no discount
+        /// </summary>
+        /// <param name="StockKeepingUnit"> SKU reference for stock item </param>
+        /// <param name="UnitPrice"> Price in pence per unit </param>
         public Stock(char StockKeepingUnit, int UnitPrice)
         {
             SKU = StockKeepingUnit;
@@ -25,9 +45,15 @@ namespace ShoppingCheckout
             SpecialPrice = 0;
             QuantityRequired = 0;
         }
-        
 
-        // Overriden constructor with discount
+
+        /// <summary>
+        /// Overriden constructor with discount
+        /// </summary>
+        /// <param name="StockKeepingUnit"> SKU reference for stock item </param>
+        /// <param name="UnitPrice"> Price in pence per unit </param>
+        /// <param name="SpecialPrice"> Price in pence per unit if quantity required condition met </param>
+        /// <param name="QuantityRequired"> Quantity of stock required for discount to apply </param>
         public Stock(char StockKeepingUnit, int UnitPrice, int SpecialPrice, int QuantityRequired)
         {
             SKU = StockKeepingUnit;
@@ -37,12 +63,18 @@ namespace ShoppingCheckout
             this.QuantityRequired = QuantityRequired;
         }
 
-         
-        // Positive integer of difference between QuantityRequired times price and SpecialPrice
+
+        /// <summary>
+        /// Positive integer of difference between QuantityRequired times price and SpecialPrice
+        /// </summary>
         private int DiscountPerQuantityRequired => (Price * QuantityRequired) - SpecialPrice;
 
 
-        // Returns positive integer of discount to be applied based on quantity of item
+        /// <summary>
+        /// Calculates how much to deduct from the total price based on the quantity of stock given
+        /// </summary>
+        /// <param name="Quantity"> How many items are being purchased in this transaction </param>
+        /// <returns> Positive integer in pence </returns>
         public int CalculateDiscount(int Quantity)
         {
 
@@ -57,9 +89,10 @@ namespace ShoppingCheckout
             }
         }
         
+
         public override string ToString()
         {
-            return base.ToString();
+            return SKU.ToString();
         }
     }
 }
