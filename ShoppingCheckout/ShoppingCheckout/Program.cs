@@ -79,6 +79,50 @@ namespace ShoppingCheckout
             Checkout.Scan('A');
             Console.WriteLine("Expecting: 50. Ouput: {0}", Checkout.GetTotalPrice());
             Checkout.Paid();
+            Console.WriteLine();
+
+            /*----------------------------------------------------------------------------------------------------*/
+            // Using Database
+
+            // Populate database with all stock
+            using (var db = new StockContext())
+            {
+                Stock2 A = new Stock2
+                {
+                    SKU = 'A',
+                    Price = 50,
+                    SpecialPrice = 130,
+                    QuantityRequired = 3,
+                };
+
+                Stock2 B = new Stock2
+                {
+                    SKU = 'B',
+                    Price = 30,
+                    SpecialPrice = 45,
+                    QuantityRequired = 2,
+                };
+
+                Stock2 C = new Stock2
+                {
+                    SKU = 'C',
+                    Price = 20,
+                };
+
+                Stock2 D = new Stock2
+                {
+                    SKU = 'D',
+                    Price = 15,
+                };
+
+                db.Stock.Add(A);
+                db.Stock.Add(B);
+                db.Stock.Add(C);
+                db.Stock.Add(D);
+
+                db.SaveChanges();
+            }
+
 
             Console.ReadLine();
         }

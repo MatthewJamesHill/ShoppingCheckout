@@ -7,18 +7,7 @@ using System.Threading.Tasks;
 
 
 namespace ShoppingCheckout
-{
-    /// <summary>
-    /// Context for database
-    /// </summary>
-    public class StockContext : DbContext
-    {
-        public DbSet<Stock> Stock { get; set; }
-    }
-    // https://msdn.microsoft.com/en-us/data/jj572366
-
-    
-    
+{   
     /// <summary>
     /// Item of stock, includes SKU, price, and discount information
     /// </summary>
