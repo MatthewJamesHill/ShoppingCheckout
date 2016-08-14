@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -22,13 +23,13 @@ namespace ShoppingCheckout
     /// </summary>
     public class Stock2
     {
-        // Would rather use string for greater variation / flexibility but Kata requires char
-        public int ID { get; set;
-        }
-        public char SKU { get; set; }
+        [Key]
+        public string SKU { get; set; }
+
         public int Price { get; set; }
 
         public int SpecialPrice { get; set; } = 0;
+
         public int QuantityRequired { get; set; } = 0;
     }
 

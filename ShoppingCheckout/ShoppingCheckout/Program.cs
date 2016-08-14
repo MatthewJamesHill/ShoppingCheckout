@@ -89,7 +89,7 @@ namespace ShoppingCheckout
             {
                 Stock2 A = new Stock2
                 {
-                    SKU = 'A',
+                    SKU = "A",
                     Price = 50,
                     SpecialPrice = 130,
                     QuantityRequired = 3,
@@ -97,7 +97,7 @@ namespace ShoppingCheckout
 
                 Stock2 B = new Stock2
                 {
-                    SKU = 'B',
+                    SKU = "B",
                     Price = 30,
                     SpecialPrice = 45,
                     QuantityRequired = 2,
@@ -105,13 +105,13 @@ namespace ShoppingCheckout
 
                 Stock2 C = new Stock2
                 {
-                    SKU = 'C',
+                    SKU = "C",
                     Price = 20,
                 };
 
                 Stock2 D = new Stock2
                 {
-                    SKU = 'D',
+                    SKU = "D",
                     Price = 15,
                 };
 
