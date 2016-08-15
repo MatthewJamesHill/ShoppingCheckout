@@ -24,3 +24,6 @@ Implement a code for a supermarket checkout
         B           30          2 for 45
         C           20
         D           15
+
+The first three files are for my first implementation
+The next three files are for a refactored version using a Code First Entity framework implementation
