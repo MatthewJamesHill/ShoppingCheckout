@@ -53,8 +53,6 @@ namespace ShoppingCheckout
                     }
                 }
             }
-
-
         }
 
 
